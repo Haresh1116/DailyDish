@@ -1,0 +1,28 @@
+name: Daily Notifications
+
+on:
+  schedule:
+    # Runs at 9:00 PM IST every day
+    # The cron schedule '30 15 * * *' is equivalent to 3:30 PM UTC.
+    # The cron schedule is based on UTC, so you need to adjust for your timezone.
+    - cron: '30 15 * * *'
+
+jobs:
+  send_notifications:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.6' # 🔁 Change to your Flutter version
+
+      - name: Install dependencies
+        working-directory: notification_sender_script
+        run: flutter pub get
+
+      - name: Run notification script
+        working-directory: notification_sender_script
+        run: flutter run --release
