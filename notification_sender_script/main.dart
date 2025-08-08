@@ -13,7 +13,7 @@ Future<void> main() async {
   OneSignal.initialize('5ec25e78-e4fa-4a0d-af4e-6ba08e3352d9');
   // [NEW] Use the Rest API Key from the environment variable provided by GitHub Actions.
   // This is a secure way to access your key.
-  final oneSignalRestApiKey = Platform.environment['ONESIGNAL_REST_API_KEY'];
+  final oneSignalRestApiKey = Platform.environment['os_v2_app_l3bf46he7jfa3l2onoqi4m2s3esjuggw3vwedqmvgyxd25kew6ti5367tipotbqopduovq7bemhdxwspvuu3vve7qzkmdcetenguhgi'];
 
   final supabase = Supabase.instance.client;
   final tomorrow = DateTime.now().add(const Duration(days: 1));
